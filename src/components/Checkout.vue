@@ -29,7 +29,7 @@ export default {
           return total
       },
       clearList: function(){
-        this.$emit("emit", "購物車已清空");
+        this.$emit("emit", "購物車即將清空");
       }
   }
 };
