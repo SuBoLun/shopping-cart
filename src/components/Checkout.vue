@@ -22,7 +22,7 @@ export default {
   props: { buyList: Array },
   methods:{
       countTotal: function(arr){
-        console.log(666)
+        console.log('test in log:checkout')
         console.log(arr)
           var total = 0;
           arr.forEach(e => total += e.amount * e.price);
