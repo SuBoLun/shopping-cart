@@ -3,20 +3,20 @@
     ref="formValidate"
     :model="formValidate"
     :rules="ruleValidate"
-    :label-width="80"
+    :label-width="700"
   >
-    <FormItem label="Name" prop="name">
+    <FormItem label="商品名稱" prop="name" >
       <Input
         v-model="formValidate.name"
         placeholder="商品名稱"
-        style="width: 250px"
+        style="width: 200px"
       />
     </FormItem>
-    <FormItem label="Price" prop="price">
+    <FormItem label="商品名稱" prop="price">
       <Input
         v-model="formValidate.price"
-        placeholder="商品價格"
-        style="width: 250px"
+        placeholder="商品名稱"
+        style="width: 200px"
       />
     </FormItem>
     <FormItem>
@@ -59,14 +59,11 @@ export default {
     handleSubmit(name) {
       this.$refs[name].validate((valid) => {
         if (valid) {
-          // this.formValidate['id'] = Math.random().toString(36).substring(7);
-          // this.formValidate['amount'] = 0 //=> 一般指定無法及時響應
-          // this.$set(this.formValidate, "amount", 0);
-
+          this.formValidate['id'] = Math.random().toString(36).substring(7);
+          // ruleValidate 表單無法驗證 number
           this.formValidate["price"] = Number(this.formValidate.price);
           this.$store.dispatch("addProduct", this.formValidate);
           this.$Message.success("新增成功!");
-          // this.productList.push(this.formValidate);
         } else {
           this.$Message.error("Fail!");
         }
