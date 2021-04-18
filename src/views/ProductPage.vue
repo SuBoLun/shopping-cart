@@ -8,8 +8,7 @@
       <template slot-scope="{ index }" slot="action">
         <InputNumber
           v-model="productList[index].amount"
-          placeholder="Enter something..."
-          style="width: 100px"
+          style="width: 100px" :min="0"
         />
       </template>
     </Table>
@@ -28,16 +27,9 @@
       ok-text="確認付款"
       cancel-text="返回"
     >
+      <!-- <CheckOut :buyList="productList" v-on:emit="clearList($event, productList)" /> -->
       <CheckOut :buyList="productList" v-on:emit="clearList($event, productList)" />
     </Modal>
-
-    <!-- <Button
-      type="primary"
-      size="small"
-      style="margin-right: 5px"
-      @click="createBuyList"
-      >test</Button
-    > -->
 
   </div>
 </template>
@@ -51,7 +43,7 @@ export default {
   props: {},
   data() {
     return {
-      buyList: [],
+      // buyList: [],
       columns1: [
         {
           type: "selection",
@@ -105,6 +97,9 @@ export default {
   //   console.log("beforeCreate");
   // },
   created() {
+    console.log('compare')
+    console.log(this.productList)
+    console.log(store.state.productList)
     // this.createBuyList()
     // console.log('c')
     // console.log(this.buyList)

@@ -2,16 +2,15 @@
   <div class="layout">
     <Layout :style="{minHeight: '100vh'}">
       <Sider collapsible :collapsed-width="78" v-model="isCollapsed">
-        <Menu active-name="1-2" theme="dark" width="auto" :class="menuitemClasses">
+        <Menu theme="dark" width="auto" :class="menuitemClasses"> 
+         <!-- active-name="1-1" 可預設 -->
           <router-link to="/add-product" exact>
             <MenuItem name="1-1">
-              <!-- <Icon type="ios-navigate"></Icon> -->
               <span>新增商品</span>
             </MenuItem>
           </router-link>
           <router-link to="/products" exact>
             <MenuItem name="1-2">
-              <Icon type="search"></Icon>
               <span>商品列表</span>
             </MenuItem>
           </router-link>

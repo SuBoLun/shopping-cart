@@ -8,7 +8,7 @@
       <ListItemMeta :title="item.price.toString()" />
 
       <li>
-        <InputNumber v-model="item.amount" style="width: 50px" />
+        <InputNumber v-model="item.amount" style="width: 50px" :min="0"/>
       </li>
     </ListItem>
     

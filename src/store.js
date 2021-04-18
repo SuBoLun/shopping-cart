@@ -8,7 +8,10 @@ const store = new Vuex.Store({
   state: {
     productList:[]
   },
-  action: {
+  actions: {
+    addProduct({ commit }, payload) {
+    commit('addProduct', payload)
+  }
 
   },
   mutations: {
@@ -19,7 +22,7 @@ const store = new Vuex.Store({
     },
     addProduct (state, paload){
         state.productList.push(paload)
-        console.log(211)
+        console.log('check in store')
         console.log(state.productList)
     }
   }
