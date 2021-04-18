@@ -5,7 +5,6 @@
     :rules="ruleValidate"
     :label-width="80"
   >
-    {{ productList }}
     <FormItem label="Name" prop="name">
       <Input
         v-model="formValidate.name"
@@ -31,7 +30,6 @@
   </Form>
 </template>
 <script>
-import store from "../store";
 export default {
   data() {
     return {
@@ -57,18 +55,13 @@ export default {
       },
     };
   },
-  computed: {
-    productList() {
-      return store.state.productList;
-    },
-  },
   methods: {
     handleSubmit(name) {
       this.$refs[name].validate((valid) => {
         if (valid) {
           // this.formValidate['id'] = Math.random().toString(36).substring(7);
           // this.formValidate['amount'] = 0 //=> 一般指定無法及時響應
-          this.$set(this.formValidate, "amount", 0);
+          // this.$set(this.formValidate, "amount", 0);
 
           this.formValidate["price"] = Number(this.formValidate.price);
           this.$store.dispatch("addProduct", this.formValidate);

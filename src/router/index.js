@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import ProductPage from '../views/ProductPage.vue'
 import AddProduct from '../views/AddProduct.vue'
-import HelloWorld from '../components/HelloWorld.vue'
+import Home from '../views/Home.vue'
 
 // 使用 vue-router
 Vue.use(VueRouter)
@@ -16,14 +16,14 @@ export default new VueRouter({
             component: ProductPage //對應組件
         },
         {
-            name: 'add-product',   
-            path: '/add-product',     
+            name: 'add-product',
+            path: '/add-product',
             component: AddProduct
         },
         {
-            name: 'test',   
-            path: '/test',     
-            component: HelloWorld
+            name: 'home',
+            path: '/',
+            component: Home
         }
-    ] 
+    ]
 })

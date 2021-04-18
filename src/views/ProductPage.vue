@@ -1,13 +1,12 @@
 <template>
   <div id="app">
-    {{productList}}
     <Table border ref="selection" :columns="columns1" :data="productList">
       <template slot-scope="{ row }" slot="name">
         <strong>{{ row.name }}</strong>
       </template>
       <template slot-scope="{ index }" slot="action">
         <InputNumber
-          v-model="productList[index].amount"
+          v-model="buyList[index].amount"
           style="width: 100px" :min="0"
         />
       </template>
@@ -23,12 +22,12 @@
     <Modal
       v-model="modal1"
       title="購買清單"
-      @on-ok="checkout(productList)"
+      @on-ok="checkout(buyList)"
       ok-text="確認付款"
       cancel-text="返回"
     >
       <!-- <CheckOut :buyList="productList" v-on:emit="clearList($event, productList)" /> -->
-      <CheckOut :buyList="productList" v-on:emit="clearList($event, productList)" />
+      <CheckOut :buyList="buyList" v-on:emit="clearList($event, buyList)" />
     </Modal>
 
   </div>
@@ -43,7 +42,7 @@ export default {
   props: {},
   data() {
     return {
-      // buyList: [],
+      buyList: [],
       columns1: [
         {
           type: "selection",
@@ -69,15 +68,17 @@ export default {
     };
   },
   methods: {
-    // createBuyList() {
-      // console.log('t')
-      // this.buyList = this.productList;
+    createBuyList() {
+      console.log('t')
+      this.buyList = this.productList;
+      this.buyList.forEach(e => this.$set(e, "amount", 0));
+
       // this.buyList.forEach((e) => (e.amount = 0));
       // test
       // this.productList.forEach((e) => (e.amount = 0));
       // this.productList.forEach((e) => (e.price = Number(e.price)));
-      // console.log(this.buyList)
-    // },
+      console.log(this.buyList)
+    },
     checkout(arr) {
       this.$Message.info("結帳完成");
       arr.forEach((e) => (e.amount = 0));
@@ -97,12 +98,12 @@ export default {
   //   console.log("beforeCreate");
   // },
   created() {
-    console.log('compare')
-    console.log(this.productList)
-    console.log(store.state.productList)
-    // this.createBuyList()
-    // console.log('c')
-    // console.log(this.buyList)
+    // console.log('compare')
+    // console.log(this.productList)
+    // console.log(store.state.productList)
+    this.createBuyList()
+    console.log('c')
+    console.log(this.buyList)
   },
   // beforeMount() {
   //   console.log("beforeMount" + this.productList.length);
