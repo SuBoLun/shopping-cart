@@ -1,13 +1,20 @@
 <template>
   <div id="app">
-    <Table border ref="selection" :columns="productColumns" :data="productList">
+    <Table
+      border
+      ref="selection"
+      :columns="productColumns"
+      :data="productList"
+      class="table"
+    >
       <template slot-scope="{ row }" slot="name">
         <strong>{{ row.name }}</strong>
       </template>
       <template slot-scope="{ index }" slot="action">
         <InputNumber
           v-model="buyList[index].amount"
-          style="width: 100px" :min="0"
+         class="inputNumber"
+          :min="0"
         />
       </template>
     </Table>
@@ -15,7 +22,7 @@
     <Button
       type="primary"
       size="small"
-      style="margin-right: 5px"
+      class="checkoutBtn"
       @click="checkoutModal = true"
       >結帳</Button
     >
@@ -28,7 +35,6 @@
     >
       <CheckOut :buyList="buyList" v-on:emit="clearList($event, buyList)" />
     </Modal>
-
   </div>
 </template>
 
@@ -69,7 +75,7 @@ export default {
   methods: {
     createBuyList() {
       this.buyList = this.productList;
-      this.buyList.forEach(e => this.$set(e, "amount", 0));
+      this.buyList.forEach((e) => this.$set(e, "amount", 0));
     },
     checkout(arr) {
       this.$Message.info("結帳完成");
@@ -77,8 +83,8 @@ export default {
     },
     clearList(data, arr) {
       arr.forEach((e) => (e.amount = 0));
-      alert(data)
-    }
+      alert(data);
+    },
   },
   computed: {
     productList() {
@@ -92,7 +98,7 @@ export default {
     // console.log('compare')
     // console.log(this.productList)
     // console.log(store.state.productList)
-    this.createBuyList()
+    this.createBuyList();
   },
   // beforeMount() {
   //   console.log("beforeMount" + this.productList.length);
@@ -119,5 +125,14 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.table {
+  margin-top: 30px;
+}
+.inputNumber{
+   width: 100px
+}
+.checkoutBtn{
+  margin-left:50%;
+}
 </style>

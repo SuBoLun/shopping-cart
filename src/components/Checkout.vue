@@ -12,8 +12,9 @@
       </li>
     </ListItem>
     
-    總金額 {{countTotal(buyList)}}
-    <Button type="error" ghost size=small @click="clearList">清空購物車</Button>
+    <li class="total">總金額 {{countTotal(buyList)}}
+    <Button class="clearBtn" type="error" ghost size=small @click="clearList">清空購物車</Button>
+    </li>
   </List>
 
 </template>
@@ -22,8 +23,6 @@ export default {
   props: { buyList: Array },
   methods:{
       countTotal: function(arr){
-        console.log('test in log:checkout')
-        console.log(arr)
           var total = 0;
           arr.forEach(e => total += e.amount * e.price);
           return total
@@ -34,3 +33,14 @@ export default {
   }
 };
 </script>
+
+
+<style scoped>
+.clearBtn {
+  margin-left: 20px
+}
+.total{
+  margin-top: 10px;
+  font-weight: bold;
+}
+</style>

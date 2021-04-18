@@ -4,27 +4,28 @@
     :model="formValidate"
     :rules="ruleValidate"
     :label-width="700"
+    class="form"
   >
     <FormItem label="商品名稱" prop="name" >
       <Input
         v-model="formValidate.name"
         placeholder="商品名稱"
-        style="width: 200px"
+        class="input"
       />
     </FormItem>
     <FormItem label="商品名稱" prop="price">
       <Input
         v-model="formValidate.price"
         placeholder="商品名稱"
-        style="width: 200px"
+        class="input"
       />
     </FormItem>
     <FormItem>
       <Button type="primary" @click="handleSubmit('formValidate')"
-        >Submit</Button
+        >新增</Button
       >
-      <Button @click="handleReset('formValidate')" style="margin-left: 8px"
-        >Reset</Button
+      <Button @click="handleReset('formValidate')" class="cancelBtn"
+        >取消</Button
       >
     </FormItem>
   </Form>
@@ -76,12 +77,14 @@ export default {
 };
 </script>
 
-<style>
-#app {
-  font-family: Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<style scoped>
+  .form {
+    margin-top: 30px
+  }
+  .input{
+    width: 200px
+  }
+  .cancelBtn{
+    margin-left: 10px
+  }
 </style>
